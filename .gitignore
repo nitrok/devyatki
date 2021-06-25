@@ -1,0 +1,55 @@
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+# Translations
+*.mo
+
+# IDEA
+.idea
+
+# Mac OS X
+.DS_Store
+
+# Node
+node_modules/
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+webpack-stats.json
+
+# Python
+.mypy_cache
+private_settings.py
+local_settings.py
+media/images
+media/i
+
+devyatki_ru/.env
+db.sqlite3
+*.session
+venv/
+
+gdpr/downloads/*.zip
