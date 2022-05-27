@@ -1,17 +1,11 @@
 # Set the default goal if no targets were specified on the command line
 .DEFAULT_GOAL = help
 
-server2: ## Runs server
-	cd src && ./manage.py makemigrations && ./manage.py migrate && ./manage.py createsuperuser && ./manage.py seed --mode=refresh
+run-bot:  ## Runs telegram bot
+	pipenv run python bot/main.py
 
-server: ## Runs server
-	cd src && ./manage.py migrate && ./manage.py runserver
-
-server3: ## Runs server
-	cd src && ./manage.py makemigrations && ./manage.py migrate && ./manage.py runserver
-
-seed: ## Seeds database
-	cd src && ./manage.py seed --mode=refresh
+docker-run-bot:
+	python3 bot/main.py
 
 #clean: ## Cleans up database
 #	cd src && ./manage.py clean
