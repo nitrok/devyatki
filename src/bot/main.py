@@ -25,11 +25,8 @@ def command_help(update: Update, context: CallbackContext) -> None:
     update.effective_chat.send_message(
         "𝟗❾⑼️ <b>Я — бот для трех девяток</b>\n\n"
         "Через меня можно отправить картинку с автомобильным номером с 999 и заработать немного кармы\n\n "
-        # "/top - Топ событий в Клубе\n\n"
-        # "/random - Почитать случайный пост (неплохо убивает время)\n\n"
-        # "/whois - Узнать профиль по телеграму\n\n"
-        # "/horo - Клубный гороскоп\n\n"
-        # "/invite - Попросить ссылку на доступ в группу\n\n"
+        # "/top - Топ событий \n\n"
+        # "/invite - Запросить ссылку на доступ в группу\n\n"
         "/help - Справка",
         parse_mode=ParseMode.HTML
     )
@@ -88,9 +85,8 @@ def main() -> None:
             listen=settings.TELEGRAM_BOT_WEBHOOK_HOST,
             port=settings.TELEGRAM_BOT_WEBHOOK_PORT,
             url_path=settings.TELEGRAM_TOKEN,
+            webhook_url=settings.TELEGRAM_BOT_WEBHOOK_URL + settings.TELEGRAM_TOKEN,
         )
-        log.info(f"Set webhook: {settings.TELEGRAM_BOT_WEBHOOK_URL + settings.TELEGRAM_TOKEN}")
-        updater.bot.set_webhook(settings.TELEGRAM_BOT_WEBHOOK_URL + settings.TELEGRAM_TOKEN)
 
     # Wait all threads
     updater.idle()

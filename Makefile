@@ -2,10 +2,10 @@
 .DEFAULT_GOAL = help
 
 run-bot:  ## Runs telegram bot
-	pipenv run python bot/main.py
+	cd src && ./manage.py migrate && pipenv run python bot/main.py
 
 docker-run-bot:
-	python3 bot/main.py
+	cd src && ./manage.py migrate && python3 bot/main.py
 
 #clean: ## Cleans up database
 #	cd src && ./manage.py clean

@@ -23,11 +23,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /src
 COPY src /src
-
-ENV NO_CACHE=On
-RUN ./manage.py compilemessages
-RUN ./manage.py collectstatic --noinput
-ENV NO_CACHE=Off
-
-
-CMD ./manage.py migrate && uwsgi --master --http :8000 --module app.wsgi --workers 2 --threads 2 --harakiri 25 --max-requests 1000 --log-x-forwarded-for
