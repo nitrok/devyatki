@@ -6,9 +6,11 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-    command: make docker-run-bot
+    command: python bot/main.py
     environment:
       - DEBUG=false
+      - SECRET_KEY=${SECRET_KEY}
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
     container_name: devyatki_bot
 
     ports:

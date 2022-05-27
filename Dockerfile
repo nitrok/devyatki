@@ -8,7 +8,7 @@ ENV DATABASE_URL sqlite:////var/lib/django-db/devyatki.sqlite
 RUN mkdir /var/lib/django-db
 VOLUME /var/lib/django-db
 
-#EXPOSE 8000
+EXPOSE 8816
 
 RUN apt-get update &&  \
     apt-get --no-install-recommends install -y build-essential locales-all gettext &&  \
