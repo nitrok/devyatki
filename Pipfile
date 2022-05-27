@@ -5,12 +5,17 @@ name = "pypi"
 
 [dev-packages]
 django-debug-toolbar = "*"
-pytest-django = ">=3.9"
-
+pytest-django = "*"
+pytest="*"
+pylint_django = "*"
 
 [packages]
-django = "==3.1"
+django = "4.0.4"
+django-split-settings = "1.1.0"
+django-behaviors = "0.5.1"
+django-environ = "0.8.1"
+python-telegram-bot = "*"
 
 
 [requires]
-python_version = "3.8"
+python_version = "3.10"
