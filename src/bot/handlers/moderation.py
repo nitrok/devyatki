@@ -20,7 +20,7 @@ def approve_photo(update: Update, context: CallbackContext) -> None:
         update.callback_query.edit_message_text("Фигня случилась, не получается найти информацию о сообщении 🤷")
         return None
 
-    user, created = User.objects.get_or_create(telegram_username=message.chat.username)
+    user, created = User.objects.get_or_create(telegram_username=message.chat.username, username=message.chat.username)
 
     if created:
         user.telegram_chat_id = message.chat.id,

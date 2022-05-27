@@ -3,7 +3,7 @@ FROM python:3.10-slim
 LABEL maintainer="alex@orlov.team"
 
 ENV STATIC_ROOT /var/lib/django-static
-ENV DATABASE_URL sqlite:////var/lib/django-db/climbing.sqlite
+ENV DATABASE_URL sqlite:////var/lib/django-db/devyatki.sqlite
 
 RUN mkdir /var/lib/django-db
 VOLUME /var/lib/django-db

@@ -11,7 +11,7 @@ def command_start(update: Update, context: CallbackContext) -> None:
         return None
 
     telegram_user_name = update.message.from_user.username;
-    user, created = User.objects.get_or_create(telegram_username=telegram_user_name)
+    user, created = User.objects.get_or_create(telegram_username=telegram_user_name, username=telegram_user_name)
 
     if created:
         user.telegram_chat_id = update.effective_user.id
