@@ -50,5 +50,5 @@ docker build -t nitrok/devyatki .
 ### Запуск контейнера
 
 ```sh
-docker run -v devyatki_db:/var/lib/django-db -p "8000:8000" -it nitrok/devyatki
+docker run -v $(pwd)/datadir:/var/lib/mysql -p "8816:8816" -e TELEGRAM_TOKEN=telegram-token -it nitrok/devyatki
 ```

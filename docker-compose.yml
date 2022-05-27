@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+
+  bot:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    command: make docker-run-bot
+    environment:
+      - DEBUG=false
+    container_name: devyatki_bot
+
+    ports:
+      - "8816:8816"
