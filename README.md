@@ -59,5 +59,13 @@ docker run -v $(pwd)/devyatki_data:/var/lib/mysql \
 или
 ```sh
 cp ./src/.env.dev .env
+mkdir /srv/devyatki/storage
 docker-compose up
+```
+
+## Nginx
+
+```sh
+sudo nginx -t
+sudo systemctl restart nginx && sudo systemctl status nginx
 ```

@@ -8,7 +8,7 @@ docker-run-bot:
 	./manage.py migrate && python3 bot/main.py
 
 fetchdb:
-	scp nibbler:/srv/devyatki/storage/devyatki.sqlite storage/
+	mkdir storage && scp nibbler:/srv/devyatki/storage/devyatki.sqlite storage/
 
 
 #clean: ## Cleans up database
