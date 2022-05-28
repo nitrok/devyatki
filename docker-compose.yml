@@ -1,17 +1,20 @@
-version: "3"
+version: "3.9"
 services:
-
 
   bot:
     build:
       dockerfile: Dockerfile
       context: .
-    command: python bot/main.py
+#    image: nitrok/devyatki
+    command: make docker-run-bot
     environment:
-      - DEBUG=false
+      - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
       - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
     container_name: devyatki_bot
-
     ports:
       - "8816:8816"
+    volumes:
+      - type: bind
+        source: /srv/devyatki/storage
+        target: /var/lib/django-db

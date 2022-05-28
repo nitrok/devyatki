@@ -5,7 +5,11 @@ run-bot:  ## Runs telegram bot
 	cd src && ./manage.py migrate && pipenv run python bot/main.py
 
 docker-run-bot:
-	cd src && ./manage.py migrate && python3 bot/main.py
+	./manage.py migrate && python3 bot/main.py
+
+fetchdb:
+	scp nibbler:/srv/devyatki/storage/devyatki.sqlite storage/
+
 
 #clean: ## Cleans up database
 #	cd src && ./manage.py clean
