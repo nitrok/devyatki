@@ -1,0 +1,17 @@
+**/venv
+**/.env
+
+.git/
+
+.editorconfig
+.gitignore
+
+README.md
+
+*.tmp
+*.log
+
+**/*.sqlite3
+
+devyatki_data
+storage
