@@ -1,11 +1,11 @@
-version: "3.9"
+version: "3.7"
 services:
 
   bot:
     build:
       dockerfile: Dockerfile
       context: .
-#    image: nitrok/devyatki
+    image: nitrok/devyatki
     command: make docker-run-bot
     environment:
       - DEBUG=${DEBUG}
