@@ -24,7 +24,6 @@ cp app/.env.dev app/.env  # default environment variables
 Для разработки:
 
 ```sh
-# run django dev server
 $ python bot/main.py
 
 ```
@@ -50,5 +49,15 @@ docker build -t nitrok/devyatki .
 ### Запуск контейнера
 
 ```sh
-docker run -v $(pwd)/datadir:/var/lib/mysql -p "8816:8816" -e TELEGRAM_TOKEN=telegram-token -it nitrok/devyatki
+mkdir devyatki_data
+docker run -v $(pwd)/devyatki_data:/var/lib/mysql \ 
+      -p "8816:8816" \
+      -e TELEGRAM_TOKEN=token \ 
+      -e SECRET_KEY=secret \
+      -it nitrok/devyatki make docker-run-bot
+```
+или
+```sh
+cp ./src/.env.dev .env
+docker-compose up
 ```
