@@ -1,25 +1,22 @@
-FROM python:3.10-slim
+FROM python:3.10-alpine
 
 LABEL maintainer="alex@orlov.team"
 
-ENV STATIC_ROOT /var/lib/django-static
 ENV DATABASE_URL sqlite:////var/lib/django-db/devyatki.sqlite
+ENV PROJECT_DIR /usr/local/src
+ENV PROJECT_DATA_DIR /var/lib/django-db
 
-RUN mkdir /var/lib/django-db
-VOLUME /var/lib/django-db
-
-EXPOSE 8816
-
-RUN apt-get update &&  \
-    apt-get --no-install-recommends install -y build-essential locales-all gettext &&  \
-    rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir --upgrade pipenv==2022.4.21 pip uwsgi==2.0.20
-
-COPY Pipfile Pipfile.lock /
-RUN pipenv lock --keep-outdated --requirements > requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir ${PROJECT_DATA_DIR}
 
 
-WORKDIR /src
-COPY src /src
+WORKDIR ${PROJECT_DIR}
+COPY Pipfile Pipfile.lock ${PROJECT_DIR}/
+
+
+RUN apk add --no-cache make && \
+    pip install --no-cache-dir pipenv && \
+    pipenv install --system --deploy --clear && \
+    pip uninstall pipenv -y
+
+COPY src ./
+COPY Makefile ./
