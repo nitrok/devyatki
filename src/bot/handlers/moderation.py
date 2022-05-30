@@ -66,10 +66,10 @@ def approve_photo(update: Update, context: CallbackContext) -> None:
 
     # notify chat 999 about new photo
     context.bot.send_photo(chat_id=settings.TELEGRAM_999_CHANNEL_ID, photo=message.photo[0].file_id)
-    context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
-                             text=f"{message.from_user.first_name} @{message.from_user.username} зарабатывает +1 в карму")
-    context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
-                             text=f"https://vk.com/wall-{settings.VK_GROUP_ID}_{plate.vk_message_id}")
+    # context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
+    #                          text=f"{message.from_user.first_name} @{message.from_user.username} зарабатывает +1 в карму")
+    # context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
+    #                          text=f"https://vk.com/wall-{settings.VK_GROUP_ID}_{plate.vk_message_id}")
 
 
 
