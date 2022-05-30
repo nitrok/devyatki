@@ -11,6 +11,10 @@ services:
       - DEBUG=${DEBUG}
       - SECRET_KEY=${SECRET_KEY}
       - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - GRAM_999_CHANNEL_ID=${GRAM_999_CHANNEL_ID}
+      - VK_GROUP_ID=${VK_GROUP_ID}
+      - VK_GROUP_ALBUM_ID=${VK_GROUP_ALBUM_ID}
+      - VK_TOKEN=${VK_TOKEN}
     container_name: devyatki_bot
     ports:
       - "8816:8816"
