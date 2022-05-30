@@ -1,10 +1,14 @@
 import json
 import logging
+import os
+import string
+import random
 
 from django.conf import settings
 from telegram import Update
 from telegram.ext import CallbackContext
 
+from bot.vk.api import post_photo_to_vk_group
 from devyatki.models import User, PlateEntry
 
 log = logging.getLogger(__name__)
@@ -50,10 +54,25 @@ def approve_photo(update: Update, context: CallbackContext) -> None:
                        telegram_message_id=message_id)
     plate.save()
 
+
+
+    file = context.bot.getFile(message.photo[-1].file_id)
+    file_name = ''.join(random.choice(string.ascii_lowercase) for i in range(10))
+    path = file.download(f'./bot/tmp_file_download/{file_name}.jpg')
+    result = post_photo_to_vk_group(path)
+    plate.vk_message_id = result['response']['post_id']
+    plate.save()
+    os.remove(path)
+
     # notify chat 999 about new photo
     context.bot.send_photo(chat_id=settings.TELEGRAM_999_CHANNEL_ID, photo=message.photo[0].file_id)
     context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
                              text=f"{message.from_user.first_name} @{message.from_user.username} зарабатывает +1 в карму")
+    context.bot.send_message(chat_id=settings.TELEGRAM_999_CHANNEL_ID,
+                             text=f"https://vk.com/wall-{settings.VK_GROUP_ID}_{plate.vk_message_id}")
+
+
+
 
     # hide buttons and send verdict
     update.callback_query.edit_message_reply_markup(reply_markup=None)

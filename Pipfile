@@ -15,7 +15,7 @@ django-split-settings = "1.1.0"
 django-behaviors = "0.5.1"
 django-environ = "0.8.1"
 python-telegram-bot = "*"
-
+requests = "2.27.1"
 
 [requires]
 python_version = "3.10"

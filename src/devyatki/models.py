@@ -50,4 +50,5 @@ class PlateEntry(Timestamped):
     telegram_message_id = models.IntegerField(default=0)
     telegram_photo_id = models.CharField(max_length=256)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    vk_message_id = models.IntegerField(default=0)
 
